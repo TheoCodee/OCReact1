@@ -1,38 +1,32 @@
-import Banner from './Banner'
-import Cart from './Cart'
-import ShoppingList from './ShoppingList';
 import '../styles/App.css';
 
+import Banner from './Banner'
+import Cart from './Cart'
+import ShoppingList from './ShoppingList'
+
+import logo from '../assets/logo-WG.png'
+
+import { useState } from 'react';
+
+
 function App() {
-  return <div>
-  
-  <Banner />
-  <Cart/>
-  <ShoppingList/>
-  </div>
+
+  const [cart, updateCart] = useState([])
+
+  return (
+    <div>
+
+      <Banner>
+        <img className='wg-logo' src={logo}></img>
+      </Banner>
+
+      <div className='wg-layout'>
+        <Cart cart={cart} updateCart={updateCart} />
+        <ShoppingList cart={cart} updateCart={updateCart} />
+      </div>
+
+    </div>
+  )
 }
 
 export default App
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }

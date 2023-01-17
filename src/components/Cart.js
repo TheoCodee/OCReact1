@@ -1,20 +1,33 @@
+import { useState } from 'react'
 import '../styles/Cart.css'
 
-function Cart() {
-    const prixCruser = 10
-    const prixLongboard = 15
-    const prixStreet = 10
+function Cart({ cart, updateCart }) {
 
-    return (
+    const [isOpen, setIsOpen] = useState(true)
+
+    return isOpen ? (
         <div className="wg-cart">
-            Panier
-            <ul>
-                <li>Cruser : {prixCruser}</li>
-                <li>Longboard : {prixLongboard}</li>
-                <li>Street : {prixStreet} </li>
-            </ul>
-            Total : {prixCruser + prixLongboard + prixStreet}
+            <button
+                onClick={() => setIsOpen(false)}
+            >
+                Fermer
+            </button>
+            {cart.length > 0 ? (
+                <h1>Panier</h1>
+            ) : (
+                null
+            )}
 
+
+
+        </div>
+    ) : (
+        <div>
+            <button
+                onClick={() => setIsOpen(true)}
+            >
+                Ouvrir
+            </button>
         </div>
     )
 }
